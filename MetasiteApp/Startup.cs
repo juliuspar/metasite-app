@@ -1,3 +1,4 @@
+using System;
 using MetasiteApp.Phones.Calls;
 using MetasiteApp.Phones.Data;
 using MetasiteApp.Phones.Smses;
@@ -23,7 +24,7 @@ namespace MetasiteApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/build";
+                configuration.RootPath = "clientapp/build";
             });
             services.
                 AddScoped<CallsRepository>().
@@ -35,7 +36,7 @@ namespace MetasiteApp
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             EnsureDatabaseIsCreated(app);
-
+            
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -51,7 +52,7 @@ namespace MetasiteApp
             });
             app.UseSpa(spa => 
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "clientapp";
 
                 if (env.IsDevelopment())
                     spa.UseReactDevelopmentServer(npmScript: "start");
