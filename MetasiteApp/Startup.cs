@@ -64,7 +64,7 @@ namespace MetasiteApp
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<TspDatabaseContext>();
-                context.Database.EnsureCreated();
+                context.Database.Migrate();
             }
         }
     }
